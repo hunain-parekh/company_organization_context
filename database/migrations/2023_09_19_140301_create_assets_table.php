@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('assets', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('company_id');
+            $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
+            $table->string('asset_name');
+            $table->decimal('value', 10, 2);
+            $table->date('purchase_date');
+            $table->text('description')->nullable();
             $table->timestamps();
         });
     }
