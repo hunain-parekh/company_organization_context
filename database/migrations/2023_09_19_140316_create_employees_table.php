@@ -13,6 +13,15 @@ return new class extends Migration
     {
         Schema::create('employees', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('company_id');
+            $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
+            $table->string('first_name');
+            $table->string('last_name');
+            $table->string('email')->unique();
+            $table->string('phone');
+            $table->date('hire_date');
+            $table->string('position');
+            $table->decimal('salary', 10, 2);
             $table->timestamps();
         });
     }
