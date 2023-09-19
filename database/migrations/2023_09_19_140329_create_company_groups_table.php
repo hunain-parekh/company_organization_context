@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('company_groups', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('company_id');
+            $table->unsignedBigInteger('employee_id')->nullable();
+            $table->string('group_name');
+            $table->text('description')->nullable();
             $table->timestamps();
         });
     }
