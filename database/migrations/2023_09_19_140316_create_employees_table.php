@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('company_id');
             $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
+            $table->unsignedBigInteger('company_group_id')->nullable(); // Optional relation to Company Groups
             $table->string('first_name');
             $table->string('last_name');
             $table->string('email')->unique();
